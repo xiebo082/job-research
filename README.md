@@ -29,6 +29,7 @@
 job-research/
 ├── 开始这里.md               # 新用户第一步：发简历 → 用户诊断 → 快速蒸馏
 ├── SKILL.md                 # 主提示词（入口）
+├── INDEX.md                 # 文件加载地图（AI 按需加载，别一次全读）
 ├── README.md                # 本文件
 ├── LICENSE
 ├── CHANGELOG.md
