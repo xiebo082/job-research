@@ -5,7 +5,7 @@
     python3 tools/03_to_pdf.py <03_投递方案.md> [输出.pdf]
 
 依赖：Chrome（或用 CHROME 环境变量指定路径）。没有 Chrome 时只输出 HTML，不报错。
-行为：若排出来超过 1 页，自动按 0.96/0.92/0.88/0.84/0.80 逐档缩小字号与间距，
+行为：先从 1.12 倍字号试排（内容少的方案更易读），超过 1 页就按 1.06/1.0/0.96/0.92/0.88/0.84/0.80 逐档缩小，
       压到 1 页为止（不缩放布局盒，避免表格列宽变形）。
 验证：跑完打印 Pages，必须为 1。
 """
@@ -159,7 +159,7 @@ def main() -> int:
         return 1
 
     last_k, page_count = 1.0, 99
-    for k in (1.0, 0.96, 0.92, 0.88, 0.84, 0.80):
+    for k in (1.12, 1.06, 1.0, 0.96, 0.92, 0.88, 0.84, 0.80):
         page = convert(md, k)
         html_path = os.path.join(tmpdir, "方案.html")
         open(html_path, "w", encoding="utf-8").write(page)
